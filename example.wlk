@@ -1,8 +1,15 @@
 /** First Wollok example */
 
+
+
 object paqueteDeGeorge {
 
 	var estaPago = true
+
+  method puedeEntregar(mensajero,destino){
+
+	return mensajero.puedeEntrar(destino)
+  }
   
   method estaPago(){
 
@@ -12,11 +19,19 @@ object paqueteDeGeorge {
   method estaPago(_estaPago){
 		estaPago = _estaPago
   }
+
+
 }
+
 
 object chuckNorris{
 
 	const peso = 900
+
+	method puedeEntrar(destino){
+
+		return destino.puedePasar(self)
+	}
 
 	method puedeLlamar() = true
 
@@ -24,12 +39,18 @@ object chuckNorris{
 
 		return peso
 	}
+
 }
 
 object neo{
 
 	const peso = 0
 	var credito = 10
+
+	method puedeEntrar(destino){
+
+		return destino.puedePasar(self)
+	}
 
 	method puedeLlamar(){
 
@@ -54,7 +75,71 @@ object neo{
 
 object lincolnHawk{
 
-	
+	var pesoPropio = 0
+	var vehiculo = bicicleta
+
+	method puedeEntrar(destino){
+
+		return destino.puedePasar(self)
+	}
+
+	method puedeLlamar() = false
+
+	method vehiculo() {
+
+		return vehiculo
+	}
+
+	method vehiculo(_vehiculo){
+
+		vehiculo = _vehiculo
+	}
+
+	method peso(){
+
+		return pesoPropio + vehiculo.peso()
+	}	
+
+	method pesoPropio(){
+
+		return pesoPropio
+	}
+
+	method pesoPropio(_pesoPropio){
+
+		pesoPropio = _pesoPropio
+	}
+
+
+}
+
+object bicicleta{
+
+	const peso = 10
+
+	method peso() = peso
+}
+
+object camion {
+  const peso = 500
+  var cantAcoplados = 0
+
+  method peso() {
+
+	return peso + self.pesoPorAcoplados()
+  }
+
+  method pesoPorAcoplados() {
+
+	return cantAcoplados * 500
+  }
+
+  method cantAcoplados() = cantAcoplados
+
+  method cantAcoplados(_cantAcoplados){
+
+	cantAcoplados = _cantAcoplados
+  }
 }
 
 object puenteDeBrooklyn{
@@ -74,3 +159,6 @@ object laMatrix{
 		return mensajero.puedeLlamar()
 	}
 }
+
+
+
